@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { Moon, Sun, Sparkles, Code2, Layers, Mail } from "lucide-react"
+import { Logo } from "./logo"
 
 import {
   NavigationMenu,
@@ -48,23 +49,11 @@ export function Navbar() {
           
           {/* Logo */}
           <Link 
-            href="/" 
-            className="flex items-center gap-2.5 group transition-all flex-shrink-0"
-          >
-            <div className="relative">
-              <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-primary via-primary/90 to-primary/70 flex items-center justify-center transition-all group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/30 shadow-sm">
-                <span className="text-background font-bold text-lg">A</span>
-              </div>
-            </div>
-            <div className="hidden sm:flex flex-col">
-              <span className="text-base font-bold text-foreground leading-none tracking-tight">
-                acuario.dev
-              </span>
-              <span className="text-[9px] text-muted-foreground leading-none mt-0.5 tracking-wide uppercase">
-                IA + RAG Personalizado
-              </span>
-            </div>
-          </Link>
+  href="/" 
+  className="flex items-center gap-2.5 group transition-all flex-shrink-0"
+>
+  <Logo className="h-9 w-auto transition-all group-hover:scale-105" />
+</Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center flex-1 justify-center">
@@ -169,6 +158,15 @@ export function Navbar() {
 
           {/* Right side actions */}
           <div className="flex items-center gap-2">
+            {/* CTA Button */}
+            <button
+              onClick={() => scrollToSection("contacto")}
+              className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-sm font-semibold text-[#000000] shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
+            >
+              <Mail className="h-3.5 w-3.5 text-[#000000]" />
+              Agendar call
+            </button>
+
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
@@ -182,37 +180,7 @@ export function Navbar() {
               )}
             </button>
 
-            {/* CTA Button */}
-            <button
-              onClick={() => scrollToSection("contacto")}
-              className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-sm font-semibold text-background shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
-            >
-              <Mail className="h-3.5 w-3.5" />
-              Agendar call
-            </button>
 
-            {/* Mobile menu button */}
-            <button
-              className="lg:hidden inline-flex items-center justify-center h-9 w-9 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-              onClick={() => {
-                const menu = document.getElementById('mobile-menu')
-                menu?.classList.toggle('hidden')
-              }}
-            >
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            </button>
           </div>
         </div>
 
@@ -248,15 +216,12 @@ export function Navbar() {
           
           <div className="pt-2">
             <button
-              onClick={() => {
-                scrollToSection("contacto")
-                document.getElementById('mobile-menu')?.classList.add('hidden')
-              }}
-              className="flex w-full items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-background bg-primary hover:bg-primary/90 transition-all shadow-sm"
-            >
-              <Mail className="h-3.5 w-3.5" />
-              Agendar call
-            </button>
+  onClick={() => scrollToSection("contacto")}
+  className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-sm font-semibold text-[#000000] shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
+>
+  <Mail className="h-3.5 w-3.5 text-[#000000]" />
+  Agendar call
+</button>
           </div>
         </div>
       </div>

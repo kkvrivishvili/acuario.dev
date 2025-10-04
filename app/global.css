@@ -8,6 +8,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -26,6 +27,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  
+  /* Font families - Tailwind 4 syntax */
+  --font-sans: 'Cascadia Code', ui-monospace, monospace;
+  --font-mono: 'Cascadia Mono', ui-monospace, monospace;
 }
 
 :root {
@@ -77,12 +82,12 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
   html {
     scroll-behavior: smooth;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+    @apply font-bold font-mono;
   }
 }
