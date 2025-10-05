@@ -50,7 +50,7 @@ export function HeroSection() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl leading-none">
               IA que entiende
               <br />
               <span className="text-primary">tu negocio,</span>
@@ -59,9 +59,9 @@ export function HeroSection() {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              RAG personalizado que <span className="text-foreground font-bold">escala sin límites</span>, 
-              no te cuesta un riñón, y da <span className="text-foreground font-bold">respuestas precisas</span> desde el día uno.
+            <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed font-light">
+              RAG personalizado que <span className="text-foreground font-normal">escala sin límites</span>,
+              no te cuesta un riñón, y da <span className="text-foreground font-normal">respuestas precisas</span> desde el día uno.
             </p>
 
             {/* CTAs */}

@@ -63,12 +63,12 @@ export function AboutSection() {
             Fullstack Developer + IA
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl">
             Qué hago
           </h2>
 
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Desarrollo <span className="text-foreground font-semibold">sistemas de IA production-ready</span> que integran LLMs, RAG y vector databases con interfaces modernas.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
+            Desarrollo <span className="text-foreground font-normal">sistemas de IA production-ready</span> que integran LLMs, RAG y vector databases con interfaces modernas.
             Full-stack desde el modelo hasta el deployment.
           </p>
         </div>
@@ -85,7 +85,7 @@ export function AboutSection() {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
                   <Icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-xl mb-2">
                   {service.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -99,7 +99,7 @@ export function AboutSection() {
         {/* Stack */}
         <div>
           <div className="text-center mb-12">
-            <h3 className="text-2xl sm:text-3xl font-bold">
+            <h3 className="text-3xl sm:text-4xl">
               Stack
             </h3>
           </div>

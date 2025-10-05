@@ -37,11 +37,11 @@ export function ContactSection() {
             Contacto
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl">
             Hablemos de tu proyecto
           </h2>
 
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-light">
             Describime lo que necesitás y te respondo en menos de 24hs
           </p>
         </div>

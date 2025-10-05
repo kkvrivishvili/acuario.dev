@@ -25,13 +25,13 @@ export function DesignSection() {
             Design-First Approach
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl">
             El diseño no es decoración
           </h2>
 
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
             Es arquitectura de información. Cada proyecto empieza con{" "}
-            <span className="text-foreground font-semibold">diseño centrado en el usuario</span> y
+            <span className="text-foreground font-normal">diseño centrado en el usuario</span> y
             termina con código que mantiene esa visión.
           </p>
         </div>
