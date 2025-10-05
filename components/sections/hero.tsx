@@ -34,7 +34,7 @@ export function HeroSection() {
   }
 
   return (
-<section id="hero" className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#7DD3C0]/20 via-background to-[#B8E6A0]/10">
+<section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#7DD3C0]/20 via-background to-[#B8E6A0]/10">
   
   {/* Gradient overlay */}
   <div className="absolute inset-0 bg-gradient-to-br from-[#7DD3C0]/10 via-transparent to-[#B8E6A0]/10 pointer-events-none" />

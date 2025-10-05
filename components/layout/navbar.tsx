@@ -18,14 +18,24 @@ import { cn } from "@/lib/utils"
 
 export function Navbar() {
   const [theme, setTheme] = React.useState<"light" | "dark">("light")
+  const [scrolled, setScrolled] = React.useState(false)
 
   React.useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
     const initialTheme = savedTheme || systemTheme
-    
+
     setTheme(initialTheme)
     document.documentElement.classList.toggle("dark", initialTheme === "dark")
+  }, [])
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const toggleTheme = () => {
@@ -43,7 +53,12 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80">
+    <header className={cn(
+      "fixed top-0 z-50 w-full transition-all duration-300",
+      scrolled
+        ? "border-b border-border/40 bg-background/95 backdrop-blur-xl shadow-sm"
+        : "border-b border-transparent bg-transparent backdrop-blur-sm"
+    )}>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           
@@ -71,7 +86,7 @@ export function Navbar() {
                         <NavigationMenuLink asChild>
                           <button
                             onClick={() => scrollToSection("hero")}
-                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-primary/10 via-primary/5 to-background p-6 no-underline outline-none hover:shadow-md transition-all group border border-primary/10"
+                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-primary/10 via-primary/5 to-background/50 backdrop-blur-sm p-6 no-underline outline-none hover:shadow-md hover:bg-gradient-to-b hover:from-primary/15 hover:via-primary/8 hover:to-background/70 transition-all group border border-primary/10"
                           >
                             <Sparkles className="h-8 w-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
                             <div className="mb-2 mt-4 text-xl font-bold text-foreground">
@@ -246,7 +261,7 @@ function ListItem({
         <button
           onClick={onClick}
           className={cn(
-            "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-primary/5 hover:shadow-sm group w-full text-left border border-transparent hover:border-primary/10"
+            "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-background/50 hover:backdrop-blur-sm hover:shadow-sm group w-full text-left border border-transparent hover:border-primary/10"
           )}
         >
           <div className="flex items-center gap-2">
