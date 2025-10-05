@@ -53,25 +53,40 @@ export function Navbar() {
   }
 
   return (
-    <header className={cn(
-      "fixed top-0 z-50 w-full transition-all duration-300",
-      scrolled
-        ? "border-b border-border/40 bg-background/95 backdrop-blur-xl shadow-sm"
-        : "border-b border-transparent bg-transparent backdrop-blur-sm"
-    )}>
+    <header
+      className={cn(
+        "fixed top-0 z-50 w-full transition-all duration-300",
+        scrolled && "border-b border-border/20"
+      )}
+      style={{
+        background: scrolled
+          ? theme === 'dark'
+            ? 'rgba(15, 15, 15, 0.75)'
+            : 'rgba(252, 252, 252, 0.75)'
+          : 'transparent',
+        backdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'blur(8px)',
+        WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(180%)' : 'blur(8px)',
+      }}
+    >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between gap-4">
-          
-          {/* Logo */}
-          <Link 
-  href="/" 
-  className="flex items-center gap-2.5 group transition-all flex-shrink-0"
+        <div className={cn(
+          "flex items-center justify-center gap-4 transition-all duration-300 relative",
+          scrolled ? "h-14" : "h-20"
+        )}>
+
+          {/* Logo - Posicionado absolutamente para no afectar el layout */}
+          <Link
+  href="/"
+  className="absolute left-0 flex items-center gap-2.5 group transition-all flex-shrink-0"
 >
-  <Logo className="h-9 w-auto transition-all group-hover:scale-105" />
+  <Logo className={cn(
+    "w-auto transition-all duration-300 group-hover:scale-105",
+    scrolled ? "h-8" : "h-10"
+  )} />
 </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center flex-1 justify-center">
+          {/* Desktop Navigation - Centrado */}
+          <div className="hidden lg:flex items-center justify-center">
             <NavigationMenu>
               <NavigationMenuList>
                 
@@ -171,8 +186,8 @@ export function Navbar() {
             </NavigationMenu>
           </div>
 
-          {/* Right side actions */}
-          <div className="flex items-center gap-2">
+          {/* Right side actions - Posicionado absolutamente */}
+          <div className="absolute right-0 flex items-center gap-2">
             {/* CTA Button */}
             <button
               onClick={() => scrollToSection("contacto")}
