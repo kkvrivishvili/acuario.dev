@@ -115,20 +115,20 @@ export function Navbar() {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[300px] gap-3 p-4">
-                      <ListItem 
-                        onClick={() => scrollToSection("stack")} 
+                      <ListItem
+                        onClick={() => scrollToSection("prueba-social")}
                         title="Tecnología"
                       >
                         OpenAI, Anthropic, Qdrant, FastAPI, LangChain
                       </ListItem>
-                      <ListItem 
-                        onClick={() => scrollToSection("stack")} 
+                      <ListItem
+                        onClick={() => scrollToSection("prueba-social")}
                         title="Arquitectura"
                       >
                         Microservicios, Docker, Kubernetes, Redis
                       </ListItem>
-                      <ListItem 
-                        onClick={() => scrollToSection("stack")} 
+                      <ListItem
+                        onClick={() => scrollToSection("prueba-social")}
                         title="Integración"
                       >
                         APIs RESTful, Webhooks, SDK personalizado
@@ -197,7 +197,7 @@ export function Navbar() {
           </button>
           <button
             onClick={() => {
-              scrollToSection("stack")
+              scrollToSection("prueba-social")
               document.getElementById('mobile-menu')?.classList.add('hidden')
             }}
             className="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"

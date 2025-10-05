@@ -75,10 +75,10 @@ export function HeroSection() {
               </button>
               
               <button
-                onClick={() => scrollToSection("solucion")}
+                onClick={() => scrollToSection("about")}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-secondary text-secondary-foreground font-semibold hover:bg-secondary/80 transition-colors"
               >
-                Ver cómo funciona
+                Ver más
               </button>
             </div>
 
@@ -127,7 +127,7 @@ export function HeroSection() {
                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
                     <div className="w-3 h-3 rounded-full bg-green-500" />
                   </div>
-                  <span className="text-xs text-muted-foreground ml-auto font-mono">
+                  <span className="text-xs text-muted-foreground ml-auto">
                     DEMO INTERACTIVO
                   </span>
                 </div>
@@ -153,7 +153,7 @@ export function HeroSection() {
                       {demoMessages[messageIndex].context.map((item, idx) => (
                         <span 
                           key={idx}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-xs text-primary font-mono font-medium"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-xs text-primary font-medium"
                         >
                           <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                           {item}
@@ -180,7 +180,7 @@ export function HeroSection() {
               <div className="absolute -top-4 -right-4 rounded-lg px-3 py-2 bg-card border border-primary/30 shadow-lg">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-xs font-mono text-primary font-bold">
+                  <span className="text-xs text-primary font-bold">
                     Vector Search Active
                   </span>
                 </div>

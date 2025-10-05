@@ -30,7 +30,7 @@
   
   /* Font families - Tailwind 4 syntax */
   --font-sans: 'Cascadia Code', ui-monospace, monospace;
-  --font-mono: 'Cascadia Mono', ui-monospace, monospace;
+  --font-title: 'Familjen Grotesk', ui-sans-serif, system-ui; 
 }
 
 :root {
@@ -88,6 +88,24 @@
     scroll-behavior: smooth;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold font-mono;
+    @apply font-bold font-title;
   }
+}
+
+/* Custom animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px) rotate(-2deg); }
+  75% { transform: translateX(5px) rotate(2deg); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out infinite;
+}
+
+/* Background grid pattern */
+.bg-grid-white\/5 {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
 }
