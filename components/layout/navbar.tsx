@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils"
 export function Navbar() {
   const [theme, setTheme] = React.useState<"light" | "dark">("light")
   const [scrolled, setScrolled] = React.useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null
@@ -188,7 +189,7 @@ export function Navbar() {
 
           {/* Right side actions - Posicionado absolutamente */}
           <div className="absolute right-0 flex items-center gap-2">
-            {/* CTA Button */}
+            {/* CTA Button - Desktop */}
             <button
               onClick={() => scrollToSection("contacto")}
               className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-base font-semibold text-[#000000] shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
@@ -210,51 +211,186 @@ export function Navbar() {
               )}
             </button>
 
-
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        <div id="mobile-menu" className="hidden lg:hidden pb-4 pt-2 space-y-2 animate-in fade-in slide-in-from-top-5 duration-200">
-          <button
-            onClick={() => {
-              scrollToSection("solucion")
-              document.getElementById('mobile-menu')?.classList.add('hidden')
-            }}
-            className="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
-          >
-            Soluciones
-          </button>
-          <button
-            onClick={() => {
-              scrollToSection("prueba-social")
-              document.getElementById('mobile-menu')?.classList.add('hidden')
-            }}
-            className="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
-          >
-            Stack
-          </button>
-          <button
-            onClick={() => {
-              scrollToSection("contacto")
-              document.getElementById('mobile-menu')?.classList.add('hidden')
-            }}
-            className="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
-          >
-            Contacto
-          </button>
-          
-          <div className="pt-2">
+            {/* Mobile Menu Toggle */}
             <button
-  onClick={() => scrollToSection("contacto")}
-  className="w-full inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-base font-semibold text-[#000000] shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
->
-  <Mail className="h-4 w-4 text-[#000000]" />
-  Agendar call
-</button>
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden inline-flex items-center justify-center h-9 w-9 rounded-lg bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground transition-all hover:scale-105"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
+
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-40 lg:hidden transition-opacity duration-300"
+            style={{
+              background: theme === 'dark' ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0.5)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+            }}
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          {/* Menu Panel */}
+          <div
+            className={cn(
+              "fixed inset-x-4 z-50 lg:hidden rounded-xl overflow-y-auto max-h-[calc(100vh-8rem)]",
+              "animate-in fade-in slide-in-from-top-4 duration-300"
+            )}
+            style={{
+              top: scrolled ? '4rem' : '5.5rem',
+              background: theme === 'dark'
+                ? 'rgba(15, 15, 15, 0.95)'
+                : 'rgba(252, 252, 252, 0.95)',
+              backdropFilter: 'blur(24px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+              borderColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+              border: '1px solid',
+              boxShadow: theme === 'dark'
+                ? '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3)'
+                : '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            }}
+          >
+            <div className="p-5 space-y-1">
+              {/* Soluciones Section */}
+              <div className="space-y-2 pb-5 border-b border-border/20">
+                <div className="flex items-center gap-2 px-2 py-1.5 mb-1">
+                  <Sparkles className="h-4 w-4 text-primary" />
+                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Soluciones</span>
+                </div>
+                <button
+                  onClick={() => {
+                    scrollToSection("hero")
+                    setMobileMenuOpen(false)
+                  }}
+                  className="w-full text-left px-3 py-3 rounded-lg hover:bg-background/50 hover:backdrop-blur-sm transition-all group border border-transparent hover:border-primary/10"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                      <Sparkles className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-base font-semibold group-hover:text-primary transition-colors">
+                        RAG Personalizado
+                      </div>
+                      <p className="text-xs text-muted-foreground line-clamp-1 leading-relaxed">
+                        IA que entiende tu negocio, no solo tus prompts
+                      </p>
+                    </div>
+                  </div>
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection("solucion")
+                    setMobileMenuOpen(false)
+                  }}
+                  className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-background/50 hover:backdrop-blur-sm transition-all flex items-center gap-3 group border border-transparent hover:border-primary/10"
+                >
+                  <Code2 className="h-4 w-4 text-primary flex-shrink-0" />
+                  <div>
+                    <span className="text-sm font-medium group-hover:text-primary transition-colors">Precisión</span>
+                    <p className="text-xs text-muted-foreground">Búsqueda híbrida + perfil de usuario</p>
+                  </div>
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection("solucion")
+                    setMobileMenuOpen(false)
+                  }}
+                  className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-background/50 hover:backdrop-blur-sm transition-all flex items-center gap-3 group border border-transparent hover:border-primary/10"
+                >
+                  <Layers className="h-4 w-4 text-primary flex-shrink-0" />
+                  <div>
+                    <span className="text-sm font-medium group-hover:text-primary transition-colors">Escalabilidad</span>
+                    <p className="text-xs text-muted-foreground">De 10 a 10M usuarios sin refactor</p>
+                  </div>
+                </button>
+              </div>
+
+              {/* Stack Section */}
+              <div className="space-y-2 py-5 border-b border-border/20">
+                <div className="flex items-center gap-2 px-2 py-1.5 mb-1">
+                  <Code2 className="h-4 w-4 text-primary" />
+                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Stack</span>
+                </div>
+                <button
+                  onClick={() => {
+                    scrollToSection("about")
+                    setMobileMenuOpen(false)
+                  }}
+                  className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-background/50 hover:backdrop-blur-sm transition-all group border border-transparent hover:border-primary/10"
+                >
+                  <div className="text-sm font-medium group-hover:text-primary transition-colors">Tecnología</div>
+                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">OpenAI, Anthropic, Qdrant, FastAPI</p>
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection("about")
+                    setMobileMenuOpen(false)
+                  }}
+                  className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-background/50 hover:backdrop-blur-sm transition-all group border border-transparent hover:border-primary/10"
+                >
+                  <div className="text-sm font-medium group-hover:text-primary transition-colors">Arquitectura</div>
+                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Microservicios, Docker, Kubernetes</p>
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection("about")
+                    setMobileMenuOpen(false)
+                  }}
+                  className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-background/50 hover:backdrop-blur-sm transition-all group border border-transparent hover:border-primary/10"
+                >
+                  <div className="text-sm font-medium group-hover:text-primary transition-colors">Integración</div>
+                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">APIs RESTful, Webhooks, SDK personalizado</p>
+                </button>
+              </div>
+
+              {/* Contacto */}
+              <div className="pt-5 space-y-3">
+                <button
+                  onClick={() => {
+                    scrollToSection("contacto")
+                    setMobileMenuOpen(false)
+                  }}
+                  className="w-full text-left px-3 py-3 rounded-lg hover:bg-background/50 hover:backdrop-blur-sm transition-all flex items-center gap-3 group border border-transparent hover:border-primary/10"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                    <Mail className="h-5 w-5 text-primary" />
+                  </div>
+                  <span className="text-base font-medium group-hover:text-primary transition-colors">Contacto</span>
+                </button>
+
+                {/* CTA Button */}
+                <button
+                  onClick={() => {
+                    scrollToSection("contacto")
+                    setMobileMenuOpen(false)
+                  }}
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/40 active:scale-95"
+                >
+                  <Mail className="h-4 w-4" />
+                  Agendar call
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </header>
   )
 }
