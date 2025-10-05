@@ -62,7 +62,7 @@ export function Navbar() {
                 
                 {/* Soluciones Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm font-medium">
+                  <NavigationMenuTrigger className="text-base font-medium">
                     Soluciones
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -74,7 +74,7 @@ export function Navbar() {
                             className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-primary/10 via-primary/5 to-background p-6 no-underline outline-none hover:shadow-md transition-all group border border-primary/10"
                           >
                             <Sparkles className="h-8 w-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
-                            <div className="mb-2 mt-4 text-lg font-bold text-foreground">
+                            <div className="mb-2 mt-4 text-xl font-bold text-foreground">
                               RAG Personalizado
                             </div>
                             <p className="text-sm leading-snug text-muted-foreground">
@@ -110,7 +110,7 @@ export function Navbar() {
 
                 {/* Stack Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm font-medium">
+                  <NavigationMenuTrigger className="text-base font-medium">
                     Stack
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -145,7 +145,7 @@ export function Navbar() {
                   >
                     <button
                       onClick={() => scrollToSection("contacto")}
-                      className="cursor-pointer text-sm font-medium"
+                      className="cursor-pointer text-base font-medium"
                     >
                       Contacto
                     </button>
@@ -161,9 +161,9 @@ export function Navbar() {
             {/* CTA Button */}
             <button
               onClick={() => scrollToSection("contacto")}
-              className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-sm font-semibold text-[#000000] shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
+              className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-base font-semibold text-[#000000] shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
             >
-              <Mail className="h-3.5 w-3.5 text-[#000000]" />
+              <Mail className="h-4 w-4 text-[#000000]" />
               Agendar call
             </button>
 
@@ -191,7 +191,7 @@ export function Navbar() {
               scrollToSection("solucion")
               document.getElementById('mobile-menu')?.classList.add('hidden')
             }}
-            className="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+            className="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
           >
             Soluciones
           </button>
@@ -200,7 +200,7 @@ export function Navbar() {
               scrollToSection("prueba-social")
               document.getElementById('mobile-menu')?.classList.add('hidden')
             }}
-            className="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+            className="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
           >
             Stack
           </button>
@@ -209,7 +209,7 @@ export function Navbar() {
               scrollToSection("contacto")
               document.getElementById('mobile-menu')?.classList.add('hidden')
             }}
-            className="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+            className="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
           >
             Contacto
           </button>
@@ -217,9 +217,9 @@ export function Navbar() {
           <div className="pt-2">
             <button
   onClick={() => scrollToSection("contacto")}
-  className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-sm font-semibold text-[#000000] shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
+  className="w-full inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-base font-semibold text-[#000000] shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
 >
-  <Mail className="h-3.5 w-3.5 text-[#000000]" />
+  <Mail className="h-4 w-4 text-[#000000]" />
   Agendar call
 </button>
           </div>
@@ -251,7 +251,7 @@ function ListItem({
         >
           <div className="flex items-center gap-2">
             {icon && <span className="flex-shrink-0">{icon}</span>}
-            <div className="text-sm font-semibold leading-none text-foreground group-hover:text-primary transition-colors">
+            <div className="text-base font-semibold leading-none text-foreground group-hover:text-primary transition-colors">
               {title}
             </div>
           </div>

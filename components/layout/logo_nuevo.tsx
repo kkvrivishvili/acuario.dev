@@ -30,7 +30,7 @@ export function Logo({ className = "h-9 w-auto" }: { className?: string }) {
             y="60.163155"
             className="fill-foreground transition-colors duration-300"
             style={{
-              fontStyle: 'italic',
+              fontStyle: 'normal',
               fontWeight: 'bold',
               fontSize: '69.5712px',
               fontFamily: "'IBM Plex Mono', 'Cascadia Mono', monospace",
