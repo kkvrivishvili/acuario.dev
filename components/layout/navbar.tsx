@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Moon, Sun, Sparkles, Code2, Layers, Mail } from "lucide-react"
+import { Moon, Sun, Sparkles, Code2, Layers, Mail, ArrowRight, Linkedin, Github } from "lucide-react"
 import { Logo } from "./logo"
 
 import {
@@ -20,6 +20,7 @@ export function Navbar() {
   const [theme, setTheme] = React.useState<"light" | "dark">("light")
   const [scrolled, setScrolled] = React.useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+  const [showCTA, setShowCTA] = React.useState(false)
 
   React.useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null
@@ -33,6 +34,13 @@ export function Navbar() {
   React.useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
+
+      // Detectar si pasamos la sección hero
+      const heroSection = document.getElementById("hero")
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight
+        setShowCTA(window.scrollY > heroBottom - 100)
+      }
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -189,14 +197,47 @@ export function Navbar() {
 
           {/* Right side actions - Posicionado absolutamente */}
           <div className="absolute right-0 flex items-center gap-2">
-            {/* CTA Button - Desktop */}
-            <button
-              onClick={() => scrollToSection("contacto")}
-              className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-base font-semibold text-[#000000] shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105"
-            >
-              <Mail className="h-4 w-4 text-[#000000]" />
-              Agendar call
-            </button>
+            {/* Social Links - Solo visible ANTES del hero */}
+            {!showCTA && (
+              <div className="hidden md:flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center text-muted-foreground hover:text-primary transition-all hover:scale-110"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center text-muted-foreground hover:text-primary transition-all hover:scale-110"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
+                </a>
+                <a
+                  href="mailto:contact@example.com"
+                  className="inline-flex items-center justify-center text-muted-foreground hover:text-primary transition-all hover:scale-110"
+                  aria-label="Email"
+                >
+                  <Mail className="h-5 w-5" />
+                </a>
+              </div>
+            )}
+
+            {/* CTA Button - Desktop - Solo visible DESPUÉS del hero */}
+            {showCTA && (
+              <button
+                onClick={() => scrollToSection("contacto")}
+                className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-base font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105 animate-in fade-in slide-in-from-top-2 duration-300"
+              >
+                Agendar Meeting
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            )}
 
             {/* Theme Toggle */}
             <button

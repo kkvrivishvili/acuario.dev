@@ -92,19 +92,13 @@ export function HeroSection() {
           
           {/* Left - Copy */}
           <div className="space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-semibold">
-              <Sparkles className="w-4 h-4" />
-              RAG Personalizado de Nueva Generación
-            </div>
-
             {/* Headline */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl leading-none">
               IA que entiende
               <br />
               <span className="text-primary">tu negocio,</span>
               <br />
-              no solo tus prompts
+              y da valor al cliente
             </h1>
 
             {/* Subheadline */}
@@ -119,50 +113,12 @@ export function HeroSection() {
                 onClick={() => scrollToSection("contacto")}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 shadow-sm transition-all hover:scale-105"
               >
-                Agendar llamada
+                Agendar Meeting
                 <ArrowRight className="w-4 h-4" />
               </button>
-              
-              <button
-                onClick={() => scrollToSection("about")}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-secondary text-secondary-foreground font-semibold hover:bg-secondary/80 transition-colors"
-              >
-                Ver más
-              </button>
             </div>
 
-            {/* Metrics */}
-            <div className="grid grid-cols-3 gap-4 pt-4">
-              <div className="flex flex-col items-center sm:items-start gap-2">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <div className="text-center sm:text-left">
-                  <div className="text-lg font-bold">&lt;200ms</div>
-                  <div className="text-xs text-muted-foreground">Latencia</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center sm:items-start gap-2">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                <div className="text-center sm:text-left">
-                  <div className="text-lg font-bold">99.7%</div>
-                  <div className="text-xs text-muted-foreground">Precisión</div>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center sm:items-start gap-2">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <TrendingDown className="w-6 h-6 text-primary" />
-                </div>
-                <div className="text-center sm:text-left">
-                  <div className="text-lg font-bold">-70%</div>
-                  <div className="text-xs text-muted-foreground">Costo</div>
-                </div>
-              </div>
-            </div>
+            
           </div>
 
           {/* Right - Demo */}
