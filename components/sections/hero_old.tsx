@@ -5,8 +5,7 @@ import { ArrowRight, Sparkles, Zap, Target, TrendingDown } from "lucide-react"
 
 export function HeroSection() {
   const [messageIndex, setMessageIndex] = React.useState(0)
-  const [isDark, setIsDark] = React.useState(false)
-
+  
   const demoMessages = [
     {
       user: "¿Qué me sugieres hoy?",
@@ -27,20 +26,6 @@ export function HeroSection() {
     return () => clearInterval(interval)
   }, [])
 
-  React.useEffect(() => {
-    const checkDarkMode = () => {
-      const isDarkMode = document.documentElement.classList.contains('dark')
-      setIsDark(isDarkMode)
-    }
-
-    checkDarkMode()
-
-    const observer = new MutationObserver(checkDarkMode)
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-
-    return () => observer.disconnect()
-  }, [])
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -48,45 +33,11 @@ export function HeroSection() {
     }
   }
 
-  const filterStyle = isDark
-    ? 'brightness(0.88) sepia(0.08) saturate(1.15)'
-    : 'brightness(1)'
-
   return (
-    <section 
-      id="hero" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* Background - adaptable a modo claro/oscuro */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#e0f2fe] via-background to-[#ede9fe] dark:from-[#0a1628] dark:via-[#0d1b2e] dark:to-[#1a1f3a]" />
-      
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Modo claro: azul marino suave + violeta */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e40af]/8 via-transparent to-[#7c3aed]/6 dark:opacity-0 transition-opacity duration-300" />
-        
-        {/* Modo oscuro: azul marino profundo con acentos */}
-        <div className="absolute inset-0 opacity-0 dark:opacity-100 transition-opacity duration-300">
-          {/* Gradiente base */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1e40af]/10 via-transparent to-[#7c3aed]/8" />
-          
-          {/* Glow central - azul metálico */}
-          <div className="absolute inset-0" style={{
-            background: "radial-gradient(ellipse 80% 50% at 50% 40%, rgba(79, 70, 229, 0.08), transparent 70%)"
-          }} />
-          
-          {/* Glow inferior izquierda - verde metálico */}
-          <div className="absolute inset-0" style={{
-            background: "radial-gradient(ellipse 60% 50% at 0% 100%, rgba(20, 184, 166, 0.06), transparent 50%)"
-          }} />
-          
-          {/* Glow superior derecha - violeta */}
-          <div className="absolute inset-0" style={{
-            background: "radial-gradient(ellipse 50% 40% at 100% 0%, rgba(139, 92, 246, 0.07), transparent 50%)"
-          }} />
-        </div>
-      </div>
-
+<section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#7DD3C0]/20 via-background to-[#B8E6A0]/10">
+  
+  {/* Gradient overlay */}
+  <div className="absolute inset-0 bg-gradient-to-br from-[#7DD3C0]/10 via-transparent to-[#B8E6A0]/10 pointer-events-none" />
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
@@ -167,19 +118,16 @@ export function HeroSection() {
 
           {/* Right - Demo */}
           <div>
-            <div
-              className="relative transition-all duration-500"
-              style={{ filter: filterStyle }}
-            >
-              <div className="rounded-2xl border border-gray-200 bg-white backdrop-blur-sm p-6 shadow-xl">
+            <div className="relative">
+              <div className="rounded-2xl border border-border bg-card/90 backdrop-blur-sm p-6 shadow-xl">
                 {/* Header */}
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-200">
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border">
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500" />
                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
                     <div className="w-3 h-3 rounded-full bg-green-500" />
                   </div>
-                  <span className="text-xs text-gray-500 ml-auto">
+                  <span className="text-xs text-muted-foreground ml-auto">
                     DEMO INTERACTIVO
                   </span>
                 </div>
@@ -188,22 +136,22 @@ export function HeroSection() {
                 <div className="space-y-4 min-h-[300px]">
                   <div className="flex justify-end">
                     <div className="bg-primary/10 border border-primary/20 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]">
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-sm font-medium">
                         {demoMessages[messageIndex].user}
                       </p>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <div className="bg-gray-50 rounded-2xl rounded-tl-sm px-4 py-3 border border-gray-200">
-                      <p className="text-sm leading-relaxed text-gray-700">
+                    <div className="bg-muted/80 rounded-2xl rounded-tl-sm px-4 py-3 border border-border">
+                      <p className="text-sm leading-relaxed">
                         {demoMessages[messageIndex].ai}
                       </p>
                     </div>
-
+                    
                     <div className="flex flex-wrap gap-2 px-2">
                       {demoMessages[messageIndex].context.map((item, idx) => (
-                        <span
+                        <span 
                           key={idx}
                           className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-xs text-primary font-medium"
                         >
@@ -216,8 +164,8 @@ export function HeroSection() {
                 </div>
 
                 {/* Footer */}
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
+                <div className="mt-4 pt-4 border-t border-border">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <div className="flex gap-1">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                       <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" style={{ animationDelay: "0.2s" }} />
@@ -229,7 +177,7 @@ export function HeroSection() {
               </div>
 
               {/* Badge flotante */}
-              <div className="absolute -top-4 -right-4 rounded-lg px-3 py-2 bg-white border border-primary/30 shadow-lg">
+              <div className="absolute -top-4 -right-4 rounded-lg px-3 py-2 bg-card border border-primary/30 shadow-lg">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                   <span className="text-xs text-primary font-bold">
