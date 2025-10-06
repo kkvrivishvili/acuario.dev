@@ -111,7 +111,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => scrollToSection("contacto")}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 shadow-sm transition-all hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-tl-lg rounded-br-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 shadow-sm transition-all hover:scale-105"
               >
                 Agendar Meeting
                 <ArrowRight className="w-4 h-4" />

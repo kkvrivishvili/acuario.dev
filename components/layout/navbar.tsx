@@ -232,7 +232,7 @@ export function Navbar() {
             {showCTA && (
               <button
                 onClick={() => scrollToSection("contacto")}
-                className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-lg bg-primary px-5 text-base font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105 animate-in fade-in slide-in-from-top-2 duration-300"
+                className="hidden md:inline-flex items-center justify-center gap-2 h-9 rounded-tl-lg rounded-br-lg bg-primary px-5 text-base font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/30 hover:scale-105 animate-in fade-in slide-in-from-top-2 duration-300"
               >
                 Agendar Meeting
                 <ArrowRight className="h-4 w-4" />
