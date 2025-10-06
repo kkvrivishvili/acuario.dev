@@ -110,13 +110,13 @@ export function Navbar() {
                         <NavigationMenuLink asChild>
                           <button
                             onClick={() => scrollToSection("hero")}
-                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-primary/10 via-primary/5 to-background/50 backdrop-blur-sm p-6 no-underline outline-none hover:shadow-md hover:bg-gradient-to-b hover:from-primary/15 hover:via-primary/8 hover:to-background/70 transition-all group border border-primary/10"
+                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-primary/10 via-primary/5 to-gray-50 backdrop-blur-sm p-6 no-underline outline-none hover:shadow-md hover:bg-gradient-to-b hover:from-primary/15 hover:via-primary/8 hover:to-gray-100 transition-all group border border-primary/10"
                           >
                             <Sparkles className="h-8 w-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
-                            <div className="mb-2 mt-4 text-xl font-bold text-foreground">
+                            <div className="mb-2 mt-4 text-xl font-bold text-gray-900">
                               RAG Personalizado
                             </div>
-                            <p className="text-sm leading-snug text-muted-foreground">
+                            <p className="text-sm leading-snug text-gray-600">
                               IA que entiende tu negocio, no solo tus prompts. Precisión, escalabilidad y costos optimizados.
                             </p>
                           </button>
@@ -442,7 +442,7 @@ function ListItem({
   icon,
   onClick,
   ...props
-}: React.ComponentPropsWithoutRef<"li"> & { 
+}: React.ComponentPropsWithoutRef<"li"> & {
   title: string
   icon?: React.ReactNode
   onClick?: () => void
@@ -453,16 +453,16 @@ function ListItem({
         <button
           onClick={onClick}
           className={cn(
-            "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-background/50 hover:backdrop-blur-sm hover:shadow-sm group w-full text-left border border-transparent hover:border-primary/10"
+            "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-gray-50 hover:backdrop-blur-sm hover:shadow-sm group w-full text-left border border-transparent hover:border-primary/10"
           )}
         >
           <div className="flex items-center gap-2">
             {icon && <span className="flex-shrink-0">{icon}</span>}
-            <div className="text-base font-semibold leading-none text-foreground group-hover:text-primary transition-colors">
+            <div className="text-base font-semibold leading-none text-gray-900 group-hover:text-primary transition-colors">
               {title}
             </div>
           </div>
-          <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mt-1.5">
+          <p className="line-clamp-2 text-xs leading-snug text-gray-600 mt-1.5">
             {children}
           </p>
         </button>
